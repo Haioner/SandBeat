@@ -9,4 +9,7 @@ public enum IngredientType
 public class IngredientSO : ScriptableObject
 {
     public IngredientType ingredientType;
+    public string IgrendientName;
+    public Sprite IngredientIcon;
+    public GameObject IngredientPrefab;
 }

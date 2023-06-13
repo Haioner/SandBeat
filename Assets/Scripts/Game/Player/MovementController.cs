@@ -16,9 +16,9 @@ public class MovementController : MonoBehaviour
     [SerializeField] private Slider m_dashCooldownSlider;
     [SerializeField] private float m_dashForce = 5f;
     [SerializeField] private float m_dashCooldown = 1f;
+    public bool m_canDash = true;
     private float m_dashTime = 0.2f;
     private bool m_isDashing;
-    private bool m_canDash = true;
     private float m_initialDashTime;
     private float m_initialDashCooldown;
     private Vector3 m_mousePosition;
