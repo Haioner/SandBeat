@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float m_currentSpeed = 10f;
     [SerializeField] private float m_acceleration = 45f;
     [SerializeField] private float m_deceleration = 35f;
-    [HideInInspector] public bool CanMove = true;
+    public bool CanMove = true;
 
     [Header("Flip")]
     [SerializeField] private Transform m_flipTransform;
@@ -34,6 +34,7 @@ public class MovementController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         m_initialDashTime = m_dashTime;
         m_initialDashCooldown = m_dashCooldown;
+        m_dashCooldown = 0;
     }
 
     private void Update() => Dash();
@@ -87,7 +88,7 @@ public class MovementController : MonoBehaviour
     #endregion
 
     #region Dash
-    public void UpdateDashSlider() => m_dashCooldownSlider.value = m_dashCooldown / m_initialDashCooldown;
+    private void UpdateDashSlider() => m_dashCooldownSlider.value = m_dashCooldown / m_initialDashCooldown;
 
     private void Dash()
     {
@@ -124,12 +125,12 @@ public class MovementController : MonoBehaviour
         }
 
         m_dashCooldown -= Time.deltaTime;
-        UpdateDashSlider();
         if (m_dashCooldown <= 0)
         {
             m_canDash = true;
             m_dashCooldown = 0;
         }
+        UpdateDashSlider();
     }
     #endregion
 }
