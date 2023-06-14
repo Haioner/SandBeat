@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
             m_kickSource.Play();
             AudioSources?.Invoke();
             AudioSources?.RemoveAllListeners();
+            CameraShake.instance.ShakeCamera(1f, 0.05f);
         }
 
         if(!CanBeat && !m_snareSource.isPlaying)
@@ -66,12 +67,14 @@ public class GameManager : MonoBehaviour
             m_snareSource.Play();
             AudioSources?.Invoke();
             AudioSources?.RemoveAllListeners();
+            CameraShake.instance.ShakeCamera(1f, 0.05f);
         }
     }
 
     public void InstantiateSoundVisual(Transform soundPos)
     {
         Instantiate(m_soundEffect, soundPos.position, Quaternion.identity);
+
     }
 
     public void AddAudioSourcers(AudioSource source, Transform soundPos)

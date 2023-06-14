@@ -10,7 +10,7 @@ public class PlayerHand : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(m_dropKey))
+        if (Input.GetKey(m_dropKey) || Input.GetMouseButtonDown(0))
             DropItem();
     }
 
@@ -33,6 +33,7 @@ public class PlayerHand : MonoBehaviour
         newIngredient.CanInteract = false;
         newIngredient.DestroyInteractCanvas();
         m_currentItem = newItem;
+        m_currentItem.transform.eulerAngles = Vector2.zero;
         GameManager.instance.AddAudioSourcers(m_itemSource, m_currentItem.transform);
     }
 
@@ -42,6 +43,7 @@ public class PlayerHand : MonoBehaviour
         {
             GameManager.instance.AddAudioSourcers(m_dropSource, m_currentItem.transform);
             m_currentItem.transform.position = transform.position;
+            m_currentItem.transform.eulerAngles = Vector2.zero;
             m_currentItem.GetComponent<ItemIngredient>().CanInteract = true;
             m_currentItem.transform.SetParent(null);
             m_currentItem = null;
