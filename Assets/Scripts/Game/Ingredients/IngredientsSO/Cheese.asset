@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Cheese
   m_EditorClassIdentifier: 
   ingredientType: 3
-  IgrendientName: Meat
-  IngredientIcon: {fileID: 0}
-  IngredientPrefab: {fileID: 0}
+  IngredientPrefab: {fileID: 3638038625291088656, guid: 9ca957e0ed18313488acb3f4b0fa5f0f, type: 3}
+  ingredientSprite: {fileID: -1085670159, guid: 8424d67ce61a8894dad9a5ec8dbd3e31, type: 3}

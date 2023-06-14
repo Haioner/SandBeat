@@ -27,6 +27,7 @@ public class IngredientManager : MonoBehaviour, Iinteractable
         BaseMinigame minigame = Instantiate(m_minigameCanvas, m_minigameCanvasPos);
         minigame.ingredientManager = this;
 
+        m_targetGroup.m_Targets[2].target = transform;
         m_targetGroup.m_Targets[2].weight = 10;
         m_targetGroup.m_Targets[2].radius = 10;
     }

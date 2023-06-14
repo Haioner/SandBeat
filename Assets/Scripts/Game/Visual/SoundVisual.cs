@@ -9,16 +9,7 @@ public class SoundVisual : MonoBehaviour
     private void Awake()
     {
         m_spriteRenderer.sprite = m_sprites[Random.Range(0, m_sprites.Count)];
-        m_spriteRenderer.color = GenerateRandomColor();
-    }
-
-    private Color GenerateRandomColor()
-    {
-        float r = Random.Range(0f, 1f);
-        float g = Random.Range(0f, 1f);
-        float b = Random.Range(0f, 1f);
-
-        return new Color(r, g, b);
+        m_spriteRenderer.color = RandomColor.Generate();
     }
 
     public void DestroyEffecct() => Destroy(gameObject);

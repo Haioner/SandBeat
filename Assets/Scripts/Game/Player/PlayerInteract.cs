@@ -55,6 +55,9 @@ public class PlayerInteract : MonoBehaviour
         if (m_nearestInteractable == null) return;
 
         if (Input.GetKeyDown(m_keyCode))
+        {
             m_nearestInteractable.GetComponent<Iinteractable>().Interact();
+            m_nearestInteractable = null;
+        }
     }
 }

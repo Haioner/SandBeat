@@ -10,4 +10,5 @@ public class IngredientSO : ScriptableObject
 {
     public IngredientType ingredientType;
     public ItemIngredient IngredientPrefab;
+    public Sprite ingredientSprite;
 }

@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ingredient: {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
-  SpawnPosition: {fileID: 0}
   ingredientManager: {fileID: 0}
   MinigameAudioSource: {fileID: 7610010013547086586}
   MissAudioSource: {fileID: 4239105627984065368}

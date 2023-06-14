@@ -23,7 +23,7 @@ public class BreadMinigame : BaseMinigame
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             CheckNoteHit();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -44,7 +44,7 @@ public class BreadMinigame : BaseMinigame
         GameObject note = Instantiate(m_notePrefab, m_hitsPos);
         m_noteList.Add(note);
 
-        StartCoroutine(DestroyNoteAfterDelay(note, 2.3f));
+        StartCoroutine(DestroyNoteAfterDelay(note, 1.35f));
     }
 
     private IEnumerator DestroyNoteAfterDelay(GameObject note, float delay)
@@ -53,7 +53,7 @@ public class BreadMinigame : BaseMinigame
 
         if (m_noteList.Contains(note))
         {
-            MissAudioSource.Play();
+            GameManager.instance.AddAudioSourcers(MissAudioSource.clip, note.transform);
             SpawnNote();
             m_noteList.Remove(note);
             Destroy(note);
@@ -121,9 +121,8 @@ public class BreadMinigame : BaseMinigame
     private void EndIngredient()
     {
         m_isPlaying = false;
-        GameManager.instance.playerHand.DropItem();
-        GameManager.instance.playerHand.SpawnIngredient(Ingredient);
         GameManager.instance.PlayerMovement.SetCanMove(true);
+        GameManager.instance.playerHand.SpawnIngredient(Ingredient);
         ingredientManager.DestroyInteractCanvas();
         Destroy(gameObject);
     }
