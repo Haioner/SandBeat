@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
     [SerializeField] private KeyCode m_dropKey;
     [SerializeField] private Transform m_handPosition;
+    [SerializeField] private AudioSource m_dropSource;
+    [SerializeField] private AudioSource m_itemSource;
     private GameObject m_currentItem;
 
     private void Update()
@@ -21,6 +21,7 @@ public class PlayerHand : MonoBehaviour
         currentIngredient.CanInteract = false;
         currentIngredient.DestroyInteractCanvas();
         m_currentItem = currentIngredient.gameObject;
+        GameManager.instance.AddAudioSourcers(m_itemSource, m_currentItem.transform);
     }
 
     public void TakeItem(GameObject newItem)
@@ -32,12 +33,14 @@ public class PlayerHand : MonoBehaviour
         newIngredient.CanInteract = false;
         newIngredient.DestroyInteractCanvas();
         m_currentItem = newItem;
+        GameManager.instance.AddAudioSourcers(m_itemSource, m_currentItem.transform);
     }
 
     public void DropItem()
     {
         if(m_currentItem != null)
         {
+            GameManager.instance.AddAudioSourcers(m_dropSource, m_currentItem.transform);
             m_currentItem.transform.position = transform.position;
             m_currentItem.GetComponent<ItemIngredient>().CanInteract = true;
             m_currentItem.transform.SetParent(null);

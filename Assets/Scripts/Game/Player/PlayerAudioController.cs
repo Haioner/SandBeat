@@ -34,6 +34,7 @@ public class PlayerAudioController : MonoBehaviour
         {
             NextClip(m_stepSource, m_stepsClips, m_currentStep);
             m_stepSource.Play();
+            GameManager.instance.InstantiateSoundVisual(transform);
         }
     }
 
@@ -45,6 +46,7 @@ public class PlayerAudioController : MonoBehaviour
         {
             NextClip(m_dashSource, m_dashClips , m_currentDash);
             m_dashSource.Play();
+            GameManager.instance.InstantiateSoundVisual(transform);
         }
     }
 

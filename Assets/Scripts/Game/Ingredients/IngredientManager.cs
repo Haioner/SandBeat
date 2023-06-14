@@ -22,6 +22,7 @@ public class IngredientManager : MonoBehaviour, Iinteractable
 
         m_canInteract = false;
         m_ingredientSource.Play();
+        GameManager.instance.InstantiateSoundVisual(transform);
         GameManager.instance.PlayerMovement.SetCanMove(false);
         BaseMinigame minigame = Instantiate(m_minigameCanvas, m_minigameCanvasPos);
         minigame.ingredientManager = this;

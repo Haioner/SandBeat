@@ -11,7 +11,11 @@ public class FollowMouse : MonoBehaviour
         InvokeRepeating(nameof(UpdatePosition), 0f, 0.1f);
     }
 
-    private void Update() => transform.position = m_targetPosition;
+    private void Update()
+    {
+        if (!GameManager.instance.IsPlaying) return;
+        transform.position = m_targetPosition;
+    }
 
     private void UpdatePosition()
     {

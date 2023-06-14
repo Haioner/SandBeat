@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float m_currentSpeed = 10f;
     [SerializeField] private float m_acceleration = 45f;
     [SerializeField] private float m_deceleration = 35f;
-    public bool CanMove = true;
+    public bool CanMove { get; private set; } = true;
 
     [Header("Flip")]
     [SerializeField] private Transform m_flipTransform;
