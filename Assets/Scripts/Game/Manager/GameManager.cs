@@ -1,26 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public bool IsPlaying { get; private set; }
+
+    [Header("Player")]
+    public MovementController PlayerMovement;
+    public PlayerHand playerHand;
 
     [Header("Audio Manager")]
     public float TimeBetween = 0.5f;
-    public bool CanBeat { get; set; }
+    public bool CanBeat { get; private set; }
     private float m_timer;
 
     [Header("Audio Source Beat")]
     [SerializeField] private AudioSource m_kickSource;
     [SerializeField] private AudioSource m_snareSource;
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    [Header("Minigames")]
+    public float MinigameSpeed = 7f;
+
+    private void Awake() => instance = this;
 
     private void FixedUpdate()
     {
