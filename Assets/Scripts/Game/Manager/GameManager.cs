@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public MovementController PlayerMovement;
     public PlayerHand playerHand;
 
+    [Header("Score")]
+    [SerializeField] private StarOrder m_starOrderPrefab;
+    private float Score;
+
     [Header("Audio Manager")]
     public float TimeBetween = 0.5f;
     public bool CanBeat { get; private set; }
@@ -101,6 +105,13 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void AddScore(int score, Transform position)
+    {
+        Score += score;
+        StarOrder currentStarOrder = Instantiate(m_starOrderPrefab, position.position, Quaternion.identity);
+        currentStarOrder.SetStars(score);
     }
 
 }

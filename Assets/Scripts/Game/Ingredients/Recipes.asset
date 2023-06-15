@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf325e6e7fdb0c94e983a7394a9fa2f3, type: 3}
+  m_Name: Recipes
+  m_EditorClassIdentifier: 
+  recipes:
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    RecipeName: Doble Beat
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Cheese king
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    RecipeName: Harmonic Salad
+    WaitTime: 20

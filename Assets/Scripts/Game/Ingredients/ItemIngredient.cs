@@ -1,6 +1,3 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemIngredient : MonoBehaviour, Iinteractable
@@ -14,6 +11,11 @@ public class ItemIngredient : MonoBehaviour, Iinteractable
     [SerializeField] private Transform m_interactPos;
     [SerializeField] private GameObject m_interactCanvas;
     private GameObject m_currentInteractCanvas;
+
+    public IngredientSO GetIngredient()
+    {
+        return m_ingredient;
+    }
 
     public void InitItem(IngredientSO ingredient)
     {

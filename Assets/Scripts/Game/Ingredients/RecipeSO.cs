@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Recipe", menuName = "Kitchen/Recipe")]
-public class RecipeSO : ScriptableObject
+[System.Serializable]
+public class Recipes
 {
     public List<IngredientSO> RecipeList = new List<IngredientSO>();
     public string RecipeName;
-    public Sprite RecipeIcon;
+    public float WaitTime;
+}
+
+[CreateAssetMenu(fileName = "Recipe", menuName = "Kitchen/Recipe")]
+public class RecipeSO : ScriptableObject
+{
+    public List<Recipes> recipes = new List<Recipes>();
 }
