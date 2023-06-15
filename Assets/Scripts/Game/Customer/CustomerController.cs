@@ -128,7 +128,7 @@ public class CustomerController : MonoBehaviour, Iinteractable
 
         int score = matchScore + (isOrderCorrect ? 2 : 0) + timerPoints;
 
-        GameManager.instance.AddScore(score, m_spawner.m_customers[0].transform);
+        GameManager.instance.SpawnStars(score, m_spawner.m_customers[0].transform);
     }
 
     #region Interact Methods

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     [SerializeField] private StarOrder m_starOrderPrefab;
-    private float Score;
+    [SerializeField] private GameObject m_endCanvas;
 
     [Header("Audio Manager")]
     public float TimeBetween = 0.5f;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         IsPlaying = false;
         PlayerMovement.SetCanMove(false);
+        m_endCanvas.SetActive(true);
     }
 
     private void SetBeat()
@@ -107,9 +109,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void AddScore(int score, Transform position)
+    public void SpawnStars(int score, Transform position)
     {
-        Score += score;
+        ScoreManager.instance.AddScore(score);
         StarOrder currentStarOrder = Instantiate(m_starOrderPrefab, position.position, Quaternion.identity);
         currentStarOrder.SetStars(score);
     }

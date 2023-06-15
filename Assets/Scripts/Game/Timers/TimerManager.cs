@@ -7,7 +7,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_timerText;
     [SerializeField] private DOTweenAnimation m_dotAnim;
     [SerializeField] private AudioSource m_shortTimeSource;
-    private float m_timer = 120f;
+    [SerializeField] private float m_timer = 120f;
 
     private void Start() => InvokeRepeating("UpdateTimer", 0, 1);
 
@@ -21,7 +21,7 @@ public class TimerManager : MonoBehaviour
 
             ShortTime();
         }
-        else
+        else if(m_timer <= 0)
             GameManager.instance.EndGame();
     }
 
