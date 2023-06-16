@@ -31,7 +31,7 @@ public class LettuceMinigame : BaseMinigame
     private void QuitMinigame()
     {
         GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 
@@ -107,7 +107,7 @@ public class LettuceMinigame : BaseMinigame
         m_knife.gameObject.SetActive(false);
         GameManager.instance.PlayerMovement.SetCanMove(true);
         GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 }

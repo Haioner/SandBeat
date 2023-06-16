@@ -24,12 +24,12 @@ public class IngredientManager : MonoBehaviour, Iinteractable
         m_ingredientSource.Play();
         GameManager.instance.InstantiateSoundVisual(transform);
         GameManager.instance.PlayerMovement.SetCanMove(false);
-        BaseMinigame minigame = Instantiate(m_minigameCanvas, m_minigameCanvasPos);
+        Vector3 newPos = m_minigameCanvasPos.position;
+        newPos.y += 4.5f;
+        BaseMinigame minigame = Instantiate(m_minigameCanvas, newPos, Quaternion.identity);
         minigame.ingredientManager = this;
 
-        m_targetGroup.m_Targets[2].target = transform;
-        m_targetGroup.m_Targets[2].weight = 10;
-        m_targetGroup.m_Targets[2].radius = 10;
+        SetCameraTarget(10);
     }
 
     public void InstantiateInteractCanvas()
@@ -43,9 +43,17 @@ public class IngredientManager : MonoBehaviour, Iinteractable
         if (m_currentInteractCanvas == null) return;
         Destroy(m_currentInteractCanvas);
         m_currentInteractCanvas = null;
-        m_targetGroup.m_Targets[2].weight = 0;
-        m_targetGroup.m_Targets[2].radius = 0;
-        m_canInteract = true;
+    }
+
+    public void SetCameraTarget(float value)
+    {
+        if (value > 0)
+            m_targetGroup.m_Targets[2].target = m_minigameCanvasPos.transform;
+        else
+            m_canInteract = true;
+
+        m_targetGroup.m_Targets[2].weight = value;
+        m_targetGroup.m_Targets[2].radius = value;
     }
     #endregion
 }

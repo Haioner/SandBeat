@@ -22,7 +22,7 @@ public class TomatoMinigame : BaseMinigame
     private void QuitMinigame()
     {
         GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 
@@ -64,7 +64,7 @@ public class TomatoMinigame : BaseMinigame
     {
         GameManager.instance.PlayerMovement.SetCanMove(true);
         GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 }

@@ -26,8 +26,8 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-            AddScore(50);
+        // if (Input.GetKeyDown(KeyCode.G))
+          //  AddScore(50);
     }
 
     public float GetScore()

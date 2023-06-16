@@ -40,7 +40,11 @@ public class OrderItem : MonoBehaviour
             ingredientIcon.sprite = m_ingredients[i].ingredientSprite;
 
             ingredientIcon.transform.localPosition += new Vector3(0f, yOffset, 0f);
-            yOffset += 10f;
+            yOffset += 8f;
+
+            // Randomizar a rotação no eixo Z
+            float randomRotationZ = Random.Range(-6f, 6f);
+            ingredientIcon.transform.localRotation = Quaternion.Euler(0f, 0f, randomRotationZ);
         }
 
         if (m_ingredients[0].ingredientType == IngredientType.Bread)
@@ -49,8 +53,13 @@ public class OrderItem : MonoBehaviour
             ingredientIcon.sprite = m_topBreadSprite;
 
             ingredientIcon.transform.localPosition += new Vector3(0f, yOffset, 0f);
+
+            // Randomizar a rotação no eixo Z
+            float randomRotationZ = Random.Range(-6f, 6f);
+            ingredientIcon.transform.localRotation = Quaternion.Euler(0f, 0f, randomRotationZ);
         }
     }
+
 
     private void SpawnIngredientsIcons()
     {

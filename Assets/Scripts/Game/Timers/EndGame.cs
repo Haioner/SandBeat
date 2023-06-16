@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
+using TMPro;
 
 public class EndGame : MonoBehaviour
 {
@@ -14,9 +12,7 @@ public class EndGame : MonoBehaviour
     private float m_scoreIncreaseSpeed = 1f;
     private float m_currentScore;
     private bool m_canCountScore;
-
     private float m_lastSoundTime;
-    private float m_minSoundCooldown = 0.1f;
 
     private void Start()
     {
@@ -45,14 +41,14 @@ public class EndGame : MonoBehaviour
 
     private void PlayAudio(float curveValue)
     {
-        float soundSpeed = Mathf.Lerp(0.9f, 1.2f, curveValue); // Ajuste os valores mínimo e máximo de pitch do som aqui
-        float minSoundSpeed = 0.5f; // Valor mínimo de pitch do som para garantir que seja audível
+        float soundSpeed = Mathf.Lerp(0.9f, 1.2f, curveValue);
+        float minSoundSpeed = 0.5f;
 
         float adjustedSoundSpeed = Mathf.Lerp(minSoundSpeed, 1f, soundSpeed);
         m_scoreSource.pitch = adjustedSoundSpeed;
 
-        float maxWaitTime = Mathf.Lerp(1f, 0.05f, (curveValue - 5f) / 95f); // Ajuste os valores mínimo e máximo de tempo máximo de espera aqui
-        float waitTime = Mathf.Lerp(0.1f, maxWaitTime, curveValue / 100f); // Tempo de espera baseado na velocidade da curva
+        float maxWaitTime = Mathf.Lerp(1f, 0.05f, (curveValue - 5f) / 95f);
+        float waitTime = Mathf.Lerp(0.1f, maxWaitTime, curveValue / 100f);
 
         float timeSinceLastSound = Time.time - m_lastSoundTime;
         if (timeSinceLastSound >= waitTime)
@@ -69,7 +65,7 @@ public class EndGame : MonoBehaviour
     public void LoadScores()
     {
         m_canCountScore = true;
-        m_highscoreScoreTMP.text = "Highscore " + ScoreManager.instance.GetHighScore().ToString("F0");
+        m_highscoreScoreTMP.text = "<rainb>Highscore " + ScoreManager.instance.GetHighScore().ToString("F0");
     }
 
     public void BackToMenu()

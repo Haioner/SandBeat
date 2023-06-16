@@ -104,7 +104,9 @@ public class CustomerController : MonoBehaviour, Iinteractable
         int recipeIndex = 0;
         foreach (IngredientSO playerIngredient in playerIngredients)
         {
-            if (recipeIndex >= customerRecipe.RecipeList.Count || playerIngredient != customerRecipe.RecipeList[recipeIndex])
+            if (recipeIndex >= customerRecipe.RecipeList.Count 
+                || playerIngredient != customerRecipe.RecipeList[recipeIndex] 
+                || playerIngredients.Count != customerRecipe.RecipeList.Count)
             {
                 isOrderCorrect = false;
                 break;
@@ -127,7 +129,6 @@ public class CustomerController : MonoBehaviour, Iinteractable
             matchScore = 2;
 
         int score = matchScore + (isOrderCorrect ? 2 : 0) + timerPoints;
-
         GameManager.instance.SpawnStars(score, m_spawner.m_customers[0].transform);
     }
 
@@ -152,9 +153,7 @@ public class CustomerController : MonoBehaviour, Iinteractable
         if (m_currentInteractCanvas != null) return;
         m_currentInteractCanvas = Instantiate(m_interactCanvas, m_canvasPos);
 
-        m_targetGroup.m_Targets[2].target = transform;
-        m_targetGroup.m_Targets[2].weight = 10;
-        m_targetGroup.m_Targets[2].radius = 10;
+        SetCameraTarget(10);
     }
 
     public void DestroyInteractCanvas()
@@ -163,8 +162,16 @@ public class CustomerController : MonoBehaviour, Iinteractable
         Destroy(m_currentInteractCanvas);
         m_currentInteractCanvas = null;
 
-        m_targetGroup.m_Targets[2].weight = 0;
-        m_targetGroup.m_Targets[2].radius = 0;
+        SetCameraTarget(0);
+    }
+
+    public void SetCameraTarget(float value)
+    {
+        if (value > 0)
+            m_targetGroup.m_Targets[2].target = transform;
+
+        m_targetGroup.m_Targets[2].weight = value;
+        m_targetGroup.m_Targets[2].radius = value;
     }
     #endregion
 }

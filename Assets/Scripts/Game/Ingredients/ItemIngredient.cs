@@ -46,5 +46,10 @@ public class ItemIngredient : MonoBehaviour, Iinteractable
         Destroy(m_currentInteractCanvas);
         m_currentInteractCanvas = null;
     }
+
+    public void SetCameraTarget(float value)
+    {
+        
+    }
     #endregion
 }

@@ -101,8 +101,13 @@ public class MovementController : MonoBehaviour
             m_isDashing = true;
             rb.velocity = Vector3.zero;
 
-            m_mousePosition = m_camera.ScreenToWorldPoint(Input.mousePosition);
-            m_dashDirection = (m_mousePosition - transform.position).normalized;
+            if (m_inputMovement == Vector2.zero)
+            {
+                m_mousePosition = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                m_dashDirection = (m_mousePosition - transform.position).normalized;
+            }
+            else
+                m_dashDirection = m_inputMovement.normalized;
 
             m_dashCooldown = m_initialDashCooldown;
             m_dashTime = m_initialDashTime;

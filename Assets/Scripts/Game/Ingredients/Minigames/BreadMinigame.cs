@@ -35,7 +35,7 @@ public class BreadMinigame : BaseMinigame
     private void QuitMinigame()
     {
         GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 
@@ -123,7 +123,7 @@ public class BreadMinigame : BaseMinigame
         m_isPlaying = false;
         GameManager.instance.PlayerMovement.SetCanMove(true);
         GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.DestroyInteractCanvas();
+        ingredientManager.SetCameraTarget(0);
         Destroy(gameObject);
     }
 

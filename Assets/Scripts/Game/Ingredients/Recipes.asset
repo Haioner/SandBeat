@@ -18,7 +18,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
     - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
     RecipeName: Doble Beat
-    WaitTime: 25
+    WaitTime: 27
   - RecipeList:
     - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
     - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
@@ -31,3 +31,153 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
     RecipeName: Harmonic Salad
     WaitTime: 20
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Rockin' Burguer
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Fresh Serenade
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Sizzling Symphony
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Cheesy Crescendo
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Harmonic Trio
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    RecipeName: Meaty Melody
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Jammin' Burger
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Rhythm Burger
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Veggie Anthem
+    WaitTime: 25
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Groovy Stack
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Symphony Burger
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Meaty Harmony
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Fresh Melody
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Harmonic Delight
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Tomato Serenade
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Veggie Medley
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Cheesy Anthem
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Meaty Chorus
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Fresh Rhythm
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Tomato Crescendo
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    RecipeName: Meaty Symphony
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    RecipeName: Cheesy Beat
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    RecipeName: Tomato Harmony
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
+    - {fileID: 11400000, guid: 891ebfb696d3217498befbeb4047208b, type: 2}
+    RecipeName: Double Melody
+    WaitTime: 27
+  - RecipeList:
+    - {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
+    - {fileID: 11400000, guid: b07e30cfd4c9d1c4a9da63f66e031f97, type: 2}
+    - {fileID: 11400000, guid: c95abcc3eec42ea45b0bf3e17077a912, type: 2}
+    RecipeName: Fresh Ensemble
+    WaitTime: 27
