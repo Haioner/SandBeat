@@ -12,6 +12,7 @@ public class BreadMinigame : BaseMinigame
     [SerializeField] private GameObject m_notePrefab;
     [SerializeField] private Transform m_hitsPos;
     [SerializeField] private Transform m_hitter;
+    [SerializeField] private GameObject m_hitParticle;
     private List<GameObject> m_noteList = new List<GameObject>();
 
     private float[] m_audioData = new float[512];
@@ -84,6 +85,7 @@ public class BreadMinigame : BaseMinigame
 
     private void PlayRandomClip()
     {
+        Instantiate(m_hitParticle, m_hitter);
         int randClip = Random.Range(0, AudioClips.Count);
         MinigameAudioSource.clip = AudioClips[randClip];
         MinigameAudioSource.Play();

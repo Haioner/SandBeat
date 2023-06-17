@@ -1,14 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class CheeseMinigame : BaseMinigame
 {
     [Header("Animations")]
     [SerializeField] private Animator m_knifeAnim;
     [SerializeField] private Sprite m_cutCheese;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject m_cheeseParticle;
+    [SerializeField] private GameObject m_missParticle;
 
     [Header("Position")]
     [SerializeField] private List<RectTransform> m_cheeseList = new List<RectTransform>();
@@ -45,8 +47,8 @@ public class CheeseMinigame : BaseMinigame
     {
         foreach (var cheese in m_cheeseList)
         {
-            float randPosX = Random.Range(-170f, 170f);
-            float randPosY = Random.Range(-90f, 90f);
+            float randPosX = Random.Range(-132, 132f);
+            float randPosY = Random.Range(-121f, 12f);
             Vector3 newPos = cheese.anchoredPosition;
             newPos.x = randPosX;
             newPos.y = randPosY;
@@ -66,8 +68,8 @@ public class CheeseMinigame : BaseMinigame
         Vector3 worldMousePosition = m_camera.ScreenToWorldPoint(mousePosition);
 
         Vector3 clampedPosition = new Vector3(
-            Mathf.Clamp(worldMousePosition.x, -170f, 170f),
-            Mathf.Clamp(worldMousePosition.y, -70f, 70f),
+            Mathf.Clamp(worldMousePosition.x, -132f, 132f),
+            Mathf.Clamp(worldMousePosition.y, -121f, 12f),
             m_knife.position.z
         );
         m_knife.position = clampedPosition;
@@ -89,6 +91,7 @@ public class CheeseMinigame : BaseMinigame
 
                 if (pinRect.Overlaps(cheeseRect))
                 {
+                    Instantiate(m_cheeseParticle, m_knife);
                     PlayRandomClip();
                     m_cheeseList[i].GetComponent<Image>().sprite = m_cutCheese;
                     cheeseHit = true;
@@ -101,6 +104,7 @@ public class CheeseMinigame : BaseMinigame
 
         if (!cheeseHit)
         {
+            Instantiate(m_missParticle, m_knife);
             GameManager.instance.AddAudioSourcers(MissAudioSource.clip, m_knife.transform);
         }
     }

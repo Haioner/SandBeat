@@ -16,7 +16,7 @@ public class PlayerHand : MonoBehaviour
     {
         if (!GameManager.instance.IsPlaying) return;
 
-        if (Input.GetKeyDown(m_dropKey) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(m_dropKey) || Input.GetMouseButtonDown(1))
             DropItem();
     }
 

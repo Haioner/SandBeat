@@ -1,6 +1,5 @@
-using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {

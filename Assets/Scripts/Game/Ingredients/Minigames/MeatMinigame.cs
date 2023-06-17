@@ -46,7 +46,7 @@ public class MeatMinigame : BaseMinigame
         m_greenHit.anchoredPosition = newPos;
 
 
-        //Pint
+        //Pin
         Vector3 pinPos = Vector3.zero;
         m_pin.anchoredPosition = pinPos;
     }
@@ -55,12 +55,12 @@ public class MeatMinigame : BaseMinigame
     {
         if (!m_pin.gameObject.activeInHierarchy) return;
 
-        if (!m_isRight && m_pin.anchoredPosition.x > -195)
+        if (!m_isRight && m_pin.anchoredPosition.x > -170)
             m_pinXPos -= Time.deltaTime * GameManager.instance.MinigameSpeed * 50;
         else if (!m_isRight)
             m_isRight = true;
 
-        if (m_isRight && m_pin.anchoredPosition.x < 195)
+        if (m_isRight && m_pin.anchoredPosition.x < 170)
             m_pinXPos += Time.deltaTime * GameManager.instance.MinigameSpeed * 50;
         else if (m_isRight)
             m_isRight = false;

@@ -71,12 +71,15 @@ public class EndGame : MonoBehaviour
     public void BackToMenu()
     {
         ScoreManager.instance.RestartScore();
-        SceneManager.LoadScene("Menu");
+        FindObjectOfType<Transition>().PlayOutTransition("Menu");
+        //SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
     {
         ScoreManager.instance.RestartScore();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        string sceneName = SceneManager.GetActiveScene().name;
+        FindObjectOfType<Transition>().PlayOutTransition(sceneName);
     }
 }

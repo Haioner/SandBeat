@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class LettuceMinigame : BaseMinigame
 {
     [Header("Animations")]
     [SerializeField] private Animator m_knifeAnim;
     [SerializeField] private Sprite m_cutLettuce;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject m_lettuceParticle;
+    [SerializeField] private GameObject m_missParticle;
 
     [Header("Position")]
     [SerializeField] private RectTransform m_lettuce;
@@ -37,13 +39,14 @@ public class LettuceMinigame : BaseMinigame
 
     private void StartPositions()
     {
-        float randWidth = Random.Range(50f, 80f);
+        float randWidth = Random.Range(40f, 70f);
         Vector2 newSize = m_lettuce.sizeDelta;
         newSize.x = randWidth;
+        newSize.y = randWidth;
         m_lettuce.sizeDelta = newSize;
 
-        float randPosX = Random.Range(-50f, 170f);
-        float randPosY = Random.Range(-90f, 90f);
+        float randPosX = Random.Range(-101f, 101f);
+        float randPosY = Random.Range(-54f, 54f);
         Vector3 newPos = m_lettuce.anchoredPosition;
         newPos.x = randPosX;
         newPos.y = randPosY;
@@ -68,8 +71,8 @@ public class LettuceMinigame : BaseMinigame
         newPosition.x += moveAmountHorizontal;
         newPosition.y += moveAmountVertical;
 
-        newPosition.x = Mathf.Clamp(newPosition.x, -170, 170);
-        newPosition.y = Mathf.Clamp(newPosition.y, -70, 70);
+        newPosition.x = Mathf.Clamp(newPosition.x, 28, 304);
+        newPosition.y = Mathf.Clamp(newPosition.y, -116, 74);
 
         m_knife.anchoredPosition = newPosition;
     }
@@ -84,12 +87,14 @@ public class LettuceMinigame : BaseMinigame
 
         if (pinRect.Overlaps(greenHitRect))
         {
+            Instantiate(m_lettuceParticle, m_knife);
             PlayRandomClip();
             m_lettuce.GetComponent<Image>().sprite = m_cutLettuce;
             Invoke("EndIngredient", .5f);
         }
         else
         {
+            Instantiate(m_missParticle, m_knife);
             GameManager.instance.AddAudioSourcers(MissAudioSource.clip, m_knife.transform);
             StartPositions();
         }
