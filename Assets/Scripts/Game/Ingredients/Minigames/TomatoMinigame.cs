@@ -1,30 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TomatoMinigame : BaseMinigame
 {
     [Header("Position")]
     [SerializeField] private List<RectTransform> m_TomatoList = new List<RectTransform>();
 
-    private void Start()
-    {
-        StartPositions();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            QuitMinigame();
-    }
-
-    private void QuitMinigame()
-    {
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
-    }
+    private void Start() => StartPositions();
 
     private void StartPositions()
     {
@@ -37,7 +19,7 @@ public class TomatoMinigame : BaseMinigame
             newPos.y = randPosY;
             tomato.anchoredPosition = newPos;
 
-            // Randomizar a rotação entre 0 e 360
+            //Randomize rotation
             float randomRotation = Random.Range(0f, 360f);
             tomato.localRotation = Quaternion.Euler(0f, 0f, randomRotation);
         }
@@ -47,7 +29,7 @@ public class TomatoMinigame : BaseMinigame
     {
         if (isCorrect)
         {
-            PlayRandomClip();
+            PlayRandomClip(transform);
             EndIngredient();
         }
         else
@@ -55,20 +37,5 @@ public class TomatoMinigame : BaseMinigame
             GameManager.instance.AddAudioSourcers(MissAudioSource.clip, transform);
             StartPositions();
         }
-    }
-
-    private void PlayRandomClip()
-    {
-        int randClip = Random.Range(0, AudioClips.Count);
-        MinigameAudioSource.clip = AudioClips[randClip];
-        GameManager.instance.AddAudioSourcers(AudioClips[0], transform);
-    }
-
-    private void EndIngredient()
-    {
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
     }
 }

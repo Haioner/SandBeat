@@ -1,18 +1,11 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    [SerializeField] private KeyCode m_keyCode;
-    [SerializeField] private float m_interactRange = 3f;
     [SerializeField] private LayerMask m_interactableLayer;
-    private MovementController m_playerMovement;
+    [SerializeField] private float m_interactRange = 3f;
+    [SerializeField] private KeyCode m_keyCode;
     private Transform m_nearestInteractable;
-
-    private void Awake()
-    {
-        m_playerMovement = GetComponent<MovementController>();
-    }
 
     private void Update()
     {

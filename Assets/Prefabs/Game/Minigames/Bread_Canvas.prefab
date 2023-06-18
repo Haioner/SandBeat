@@ -332,7 +332,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1833930007
   m_SortingOrder: 5
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7114560177564270607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +392,6 @@ MonoBehaviour:
   Ingredient: {fileID: 11400000, guid: 0776297071307c24fa2cdac4786ff8d8, type: 2}
   ingredientManager: {fileID: 0}
   MinigameAudioSource: {fileID: 7610010013547086586}
-  MissAudioSource: {fileID: 4239105627984065368}
   AudioClips:
   - {fileID: 8300000, guid: cf7bf12fbb579e2459fd8dbfeb0b2d0f, type: 3}
   - {fileID: 8300000, guid: de7a926936ddaf3489cc161edc8f64f8, type: 3}
@@ -400,6 +399,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 68b0f93608bc7f34e90adf2a448129b4, type: 3}
   - {fileID: 8300000, guid: 9ae691726a12aef47a30b8929ae4d101, type: 3}
   - {fileID: 8300000, guid: 41747192d37ad4a47bb9aa3106e99294, type: 3}
+  MissAudioSource: {fileID: 4239105627984065368}
   m_handsAnim:
   - {fileID: 8247716229872460184}
   - {fileID: 8501546329948384809}

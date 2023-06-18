@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerAnimation : MonoBehaviour
@@ -9,14 +7,11 @@ public class CustomerAnimation : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
 
-    private Skin currentSkin;
-    private int currentFrameIndex;
-    private float frameTimer;
+    private Skin m_currentSkin;
+    private int m_currentFrameIndex;
+    private float m_frameTimer;
 
-    private void Start()
-    {
-        RandomSkin();
-    }
+    private void Start() => RandomSkin();
 
     private void Update()
     {
@@ -29,28 +24,28 @@ public class CustomerAnimation : MonoBehaviour
     private void RandomSkin()
     {
         int randSkinIndex = Random.Range(0, m_skinsList.Skins.Count);
-        currentSkin = m_skinsList.Skins[randSkinIndex];
+        m_currentSkin = m_skinsList.Skins[randSkinIndex];
 
-        if (currentSkin.IdleSprites.Count > 0)
-            spriteRenderer.sprite = currentSkin.IdleSprites[0]; 
+        if (m_currentSkin.IdleSprites.Count > 0)
+            spriteRenderer.sprite = m_currentSkin.IdleSprites[0]; 
     }
 
     private void UpdateFrame()
     {
-        if (currentSkin.IdleSprites.Count == 0)
+        if (m_currentSkin.IdleSprites.Count == 0)
             return;
 
-        frameTimer += Time.deltaTime;
-        if (frameTimer >= 0.5f)
+        m_frameTimer += Time.deltaTime;
+        if (m_frameTimer >= 0.5f)
         {
-            frameTimer = 0f;
-            currentFrameIndex++;
+            m_frameTimer = 0f;
+            m_currentFrameIndex++;
 
             //Change Skin Frame
-            if (currentFrameIndex >= currentSkin.IdleSprites.Count)
-                currentFrameIndex = 0;
+            if (m_currentFrameIndex >= m_currentSkin.IdleSprites.Count)
+                m_currentFrameIndex = 0;
             
-            spriteRenderer.sprite = currentSkin.IdleSprites[currentFrameIndex];
+            spriteRenderer.sprite = m_currentSkin.IdleSprites[m_currentFrameIndex];
         }
     }
 }

@@ -17,9 +17,7 @@ public class PlayerAudioController : MonoBehaviour
     private Vector3 m_inputMovement;
 
     private void Awake() => m_controller = GetComponentInParent<MovementController>();
-
     private void FixedUpdate() => PlayStep();
-
     private void Update() => PlayDash();
 
     private void PlayStep()

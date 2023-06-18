@@ -5,20 +5,18 @@ using TMPro;
 
 public class OrderItem : MonoBehaviour
 {
-    [SerializeField] private Transform m_iconContent;
-    [SerializeField] private TextMeshProUGUI m_recipeName;
-    [SerializeField] private Image m_timerFill;
-    [SerializeField] private Transform m_ingredientContent;
     [SerializeField] private Image m_ingredientImagePrefab;
+    [SerializeField] private Transform m_ingredientContent;
+    [SerializeField] private TextMeshProUGUI m_recipeName;
     [SerializeField] private Sprite m_topBreadSprite;
-    private List<IngredientSO> m_ingredients = new List<IngredientSO>();
-    private float m_waitTimer;
-    private float m_currentWaitTimer;
+    [SerializeField] private Transform m_iconContent;
+    [SerializeField] private Image m_timerFill;
 
-    private void Update()
-    {
-        UpdateTimer();
-    }
+    private List<IngredientSO> m_ingredients = new List<IngredientSO>();
+    private float m_currentWaitTimer;
+    private float m_waitTimer;
+
+    private void Update() => UpdateTimer();
 
     public void InitOrder(Recipes recipe)
     {
@@ -42,11 +40,12 @@ public class OrderItem : MonoBehaviour
             ingredientIcon.transform.localPosition += new Vector3(0f, yOffset, 0f);
             yOffset += 8f;
 
-            // Randomizar a rotação no eixo Z
+            //Random Rotation Z axis
             float randomRotationZ = Random.Range(-6f, 6f);
             ingredientIcon.transform.localRotation = Quaternion.Euler(0f, 0f, randomRotationZ);
         }
 
+        //Top Bread
         if (m_ingredients[0].ingredientType == IngredientType.Bread)
         {
             Image ingredientIcon = Instantiate(m_ingredientImagePrefab, m_iconContent);
@@ -54,12 +53,11 @@ public class OrderItem : MonoBehaviour
 
             ingredientIcon.transform.localPosition += new Vector3(0f, yOffset, 0f);
 
-            // Randomizar a rotação no eixo Z
+            //Random Rotation Z axis
             float randomRotationZ = Random.Range(-6f, 6f);
             ingredientIcon.transform.localRotation = Quaternion.Euler(0f, 0f, randomRotationZ);
         }
     }
-
 
     private void SpawnIngredientsIcons()
     {

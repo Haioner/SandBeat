@@ -25,28 +25,20 @@ public class CheeseMinigame : BaseMinigame
         StartPositions();
     }
 
-    private void Update()
+    public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            KnifeCut();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            QuitMinigame();
+        base.Update();
 
         MoveKnife();
-    }
-
-    private void QuitMinigame()
-    {
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            KnifeCut();
     }
 
     private void StartPositions()
     {
         foreach (var cheese in m_cheeseList)
         {
+            //Randomize chesse positions
             float randPosX = Random.Range(-132, 132f);
             float randPosY = Random.Range(-121f, 12f);
             Vector3 newPos = cheese.anchoredPosition;
@@ -59,7 +51,7 @@ public class CheeseMinigame : BaseMinigame
     private void KnifeCut()
     {
         m_knifeAnim.SetTrigger("Hit");
-        CheckPinHit();
+        CheckKnifeHit();
     }
 
     private void MoveKnife()
@@ -75,7 +67,7 @@ public class CheeseMinigame : BaseMinigame
         m_knife.position = clampedPosition;
     }
 
-    private void CheckPinHit()
+    private void CheckKnifeHit()
     {
         Vector2 knifeScreenPos = RectTransformUtility.WorldToScreenPoint(m_camera, m_knife.position);
         bool cheeseHit = false;
@@ -92,7 +84,7 @@ public class CheeseMinigame : BaseMinigame
                 if (pinRect.Overlaps(cheeseRect))
                 {
                     Instantiate(m_cheeseParticle, m_knife);
-                    PlayRandomClip();
+                    PlayRandomClip(m_knife.transform);
                     m_cheeseList[i].GetComponent<Image>().sprite = m_cutCheese;
                     cheeseHit = true;
                     m_cheeseCount++;
@@ -109,23 +101,12 @@ public class CheeseMinigame : BaseMinigame
         }
     }
 
-    private void PlayRandomClip()
+    public override void EndIngredient()
     {
-        int randClip = Random.Range(0, AudioClips.Count);
-        MinigameAudioSource.clip = AudioClips[randClip];
-        GameManager.instance.AddAudioSourcers(MinigameAudioSource.clip, m_knife.transform);
-    }
-
-    private void EndIngredient()
-    {
-        if(m_cheeseCount >= 3)
+        if (m_cheeseCount >= 3)
         {
             m_knife.gameObject.SetActive(false);
-            GameManager.instance.PlayerMovement.SetCanMove(true);
-            GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-            ingredientManager.SetCameraTarget(0);
-            Destroy(gameObject);
-
+            base.EndIngredient();
         }
     }
 }

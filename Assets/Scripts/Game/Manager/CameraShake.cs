@@ -1,11 +1,10 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
+
     private CinemachineVirtualCamera m_virtualCamera;
     private float m_shakeTimer;
 

@@ -14,27 +14,18 @@ public class MeatMinigame : BaseMinigame
 
     private void Start() => StartPositions();
 
-    private void Update()
+    public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            CheckPinHit();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            QuitMinigame();
+        base.Update();
 
         UpdatePinPos();
-    }
-
-    private void QuitMinigame()
-    {
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            CheckPinHit();
     }
 
     private void StartPositions()
     {
-        //Green Hit
+        //Green Hit Scale/Position
         float randWidth = Random.Range(50f, 100f);
         Vector2 newSize = m_greenHit.sizeDelta;
         newSize.x = randWidth;
@@ -45,8 +36,7 @@ public class MeatMinigame : BaseMinigame
         newPos.x = randPos;
         m_greenHit.anchoredPosition = newPos;
 
-
-        //Pin
+        //Pin Position
         Vector3 pinPos = Vector3.zero;
         m_pin.anchoredPosition = pinPos;
     }
@@ -72,6 +62,8 @@ public class MeatMinigame : BaseMinigame
 
     private void CheckPinHit()
     {
+        if (!m_pin.gameObject.activeInHierarchy) return;
+
         Vector2 pinScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_pin.position);
         Vector2 greenHitScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_greenHit.position);
 
@@ -80,7 +72,8 @@ public class MeatMinigame : BaseMinigame
 
         if (pinRect.Overlaps(greenHitRect))
         {
-            PlayRandomClip();
+            PlayRandomClip(m_pin.transform);
+            m_pin.gameObject.SetActive(false);
             AnimateSpatula();
             Invoke("EndIngredient", .8f);
         }
@@ -89,22 +82,6 @@ public class MeatMinigame : BaseMinigame
             GameManager.instance.AddAudioSourcers(MissAudioSource.clip, m_pin.transform);
             StartPositions();
         }
-    }
-
-    private void PlayRandomClip()
-    {
-        int randClip = Random.Range(0, AudioClips.Count);
-        MinigameAudioSource.clip = AudioClips[randClip];
-        MinigameAudioSource.Play();
-    }
-
-    private void EndIngredient()
-    {
-        m_pin.gameObject.SetActive(false);
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
     }
 
     private void AnimateSpatula() => m_anim.SetTrigger("Hit");

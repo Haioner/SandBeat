@@ -5,10 +5,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator anim;
     private Vector2 m_inputMovement;
 
-    void Update()
-    {
-        WalkIdleAnimation();
-    }
+    void Update() => WalkIdleAnimation();
 
     private void WalkIdleAnimation()
     {

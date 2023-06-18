@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 8633556440579617343}
   - component: {fileID: 449927798874882878}
   m_Layer: 5
-  m_Name: Star_Canvas
+  m_Name: StarsScore_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

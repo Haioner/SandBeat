@@ -3,19 +3,20 @@ using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
-    [SerializeField] private KeyCode m_dropKey;
+    [SerializeField] private GameObject m_topBreadSprite;
     [SerializeField] private Transform m_handPosition;
     [SerializeField] private AudioClip m_dropClip;
     [SerializeField] private AudioClip m_itemClip;
-    [SerializeField] private List<ItemIngredient> m_handItems = new List<ItemIngredient>();
-    [SerializeField] private GameObject m_topBreadSprite;
+    [SerializeField] private KeyCode m_dropKey;
+
+    private List<ItemIngredient> m_handItems = new List<ItemIngredient>();
     private GameObject m_currentTopBread;
 
     private void Update()
     {
         if (!GameManager.instance.IsPlaying) return;
 
-        if (Input.GetKeyDown(m_dropKey) || Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(m_dropKey))
             DropItem();
     }
 
@@ -34,12 +35,16 @@ public class PlayerHand : MonoBehaviour
         if (m_handItems.Count >= 3) DropItem();
 
         ItemIngredient currentIngredient = Instantiate(ingredient.IngredientPrefab, m_handPosition);
+
+        //Multiply 0.15 in y position
         Vector3 newPos = currentIngredient.transform.position;
         newPos.y += 0.15f * m_handItems.Count;
         currentIngredient.transform.position = newPos;
 
+        //Disable Interact Item
         currentIngredient.SetColliderActive(false);
         currentIngredient.DestroyInteractCanvas();
+
         currentIngredient.InitItem(ingredient);
         m_handItems.Add(currentIngredient);
         UpdateOrderInLayer(currentIngredient.gameObject, m_handItems.Count + 1);
@@ -52,11 +57,13 @@ public class PlayerHand : MonoBehaviour
     {
         if (m_handItems.Count >= 3) return;
 
+        //Move New Item to Hand position
         newItem.SetColliderActive(false);
         newItem.transform.SetParent(m_handPosition);
         newItem.transform.eulerAngles = Vector2.zero;
         newItem.transform.localScale = new Vector3(1, 1, 1);
 
+        //Multiply 0.15 in y position
         Vector3 newPos = m_handPosition.position;
         newPos.y += 0.15f * m_handItems.Count;
         newItem.transform.position = newPos;
@@ -79,6 +86,7 @@ public class PlayerHand : MonoBehaviour
 
             GameManager.instance.AddAudioSourcers(m_dropClip, m_handItems[lastIndex].transform);
 
+            //Remove Current Item
             itemToDrop.transform.SetParent(null);
             itemToDrop.transform.position = transform.position;
             itemToDrop.transform.eulerAngles = Vector2.zero;
@@ -99,12 +107,16 @@ public class PlayerHand : MonoBehaviour
 
     private void CheckFull()
     {
+        //Create top bread when hand is full
         if (m_handItems.Count >= 3 && m_handItems[0].GetIngredient().ingredientType == IngredientType.Bread)
         {
             GameObject currentBread = Instantiate(m_topBreadSprite, m_handPosition);
+
+            //Move to top position in y axis
             Vector3 newPos = currentBread.transform.position;
             newPos.y += 0.15f * m_handItems.Count;
             currentBread.transform.position = newPos;
+
             m_currentTopBread = currentBread;
         }
         else if (m_handItems.Count < 3)

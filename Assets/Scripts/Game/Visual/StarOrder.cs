@@ -14,8 +14,5 @@ public class StarOrder : MonoBehaviour
         }
     }
 
-    public void DestroyStars()
-    {
-        Destroy(gameObject);
-    }
+    public void DestroyStars() => Destroy(gameObject);
 }

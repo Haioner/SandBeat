@@ -22,29 +22,22 @@ public class LettuceMinigame : BaseMinigame
         InvokeRepeating("KnifeCut", 1, 1);
     }
 
-    private void Update()
+    public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            QuitMinigame();
-
+        base.Update();
         MoveKnife();
-    }
-
-    private void QuitMinigame()
-    {
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
     }
 
     private void StartPositions()
     {
+        //Randomize Scale
         float randWidth = Random.Range(40f, 70f);
         Vector2 newSize = m_lettuce.sizeDelta;
         newSize.x = randWidth;
         newSize.y = randWidth;
         m_lettuce.sizeDelta = newSize;
 
+        //Randomize Position
         float randPosX = Random.Range(-101f, 101f);
         float randPosY = Random.Range(-54f, 54f);
         Vector3 newPos = m_lettuce.anchoredPosition;
@@ -56,7 +49,7 @@ public class LettuceMinigame : BaseMinigame
     private void KnifeCut()
     {
         m_knifeAnim.SetTrigger("Hit");
-        CheckPinHit();
+        CheckKnifeHit();
     }
 
     private void MoveKnife()
@@ -77,7 +70,7 @@ public class LettuceMinigame : BaseMinigame
         m_knife.anchoredPosition = newPosition;
     }
 
-    private void CheckPinHit()
+    private void CheckKnifeHit()
     {
         Vector2 knifeScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_knife.position);
         Vector2 lettuceHitScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_lettuce.position);
@@ -88,9 +81,9 @@ public class LettuceMinigame : BaseMinigame
         if (pinRect.Overlaps(greenHitRect))
         {
             Instantiate(m_lettuceParticle, m_knife);
-            PlayRandomClip();
+            PlayRandomClip(m_lettuce.transform);
             m_lettuce.GetComponent<Image>().sprite = m_cutLettuce;
-            Invoke("EndIngredient", .5f);
+            Invoke("EndIngredient", 0.5f);
         }
         else
         {
@@ -98,21 +91,5 @@ public class LettuceMinigame : BaseMinigame
             GameManager.instance.AddAudioSourcers(MissAudioSource.clip, m_knife.transform);
             StartPositions();
         }
-    }
-
-    private void PlayRandomClip()
-    {
-        int randClip = Random.Range(0, AudioClips.Count);
-        MinigameAudioSource.clip = AudioClips[randClip];
-        GameManager.instance.AddAudioSourcers(MinigameAudioSource.clip, m_lettuce.transform);
-    }
-
-    private void EndIngredient()
-    {
-        m_knife.gameObject.SetActive(false);
-        GameManager.instance.PlayerMovement.SetCanMove(true);
-        GameManager.instance.playerHand.SpawnIngredient(Ingredient);
-        ingredientManager.SetCameraTarget(0);
-        Destroy(gameObject);
     }
 }

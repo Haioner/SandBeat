@@ -7,15 +7,12 @@ public class ItemIngredient : MonoBehaviour, Iinteractable
     private IngredientSO m_ingredient;
 
     [Header("Interact")]
-    [SerializeField] private Collider2D m_collider;
-    [SerializeField] private Transform m_interactPos;
     [SerializeField] private GameObject m_interactCanvas;
+    [SerializeField] private Transform m_interactPos;
+    [SerializeField] private Collider2D m_collider;
     private GameObject m_currentInteractCanvas;
 
-    public IngredientSO GetIngredient()
-    {
-        return m_ingredient;
-    }
+    public IngredientSO GetIngredient() { return m_ingredient; }
 
     public void InitItem(IngredientSO ingredient)
     {
@@ -23,16 +20,10 @@ public class ItemIngredient : MonoBehaviour, Iinteractable
         m_spriteRenderer.sprite = ingredient.ingredientSprite;
     }
 
-    public void SetColliderActive(bool state)
-    {
-        m_collider.enabled = state;
-    }
+    public void SetColliderActive(bool state) => m_collider.enabled = state;
 
     #region Interact Methods
-    public void Interact()
-    {
-        GameManager.instance.playerHand.TakeItem(this);
-    }
+    public void Interact() => GameManager.instance.playerHand.TakeItem(this);
 
     public void InstantiateInteractCanvas()
     {
@@ -47,9 +38,6 @@ public class ItemIngredient : MonoBehaviour, Iinteractable
         m_currentInteractCanvas = null;
     }
 
-    public void SetCameraTarget(float value)
-    {
-        
-    }
+    public void SetCameraTarget(float value) { }
     #endregion
 }

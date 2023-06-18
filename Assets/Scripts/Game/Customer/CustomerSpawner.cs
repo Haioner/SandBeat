@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +17,9 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] private Transform m_exitPosition;
     [SerializeField] private List<Transform> m_rowPositions;
 
-    private float m_spawnCooldown;
-    private int m_maxCustomers = 4;
     private bool isFirstCustomerInRow0Checked = false;
+    private int m_maxCustomers = 4;
+    private float m_spawnCooldown;
 
     private CustomerController m_controller;
 
@@ -75,10 +74,7 @@ public class CustomerSpawner : MonoBehaviour
         }
     }
 
-    private void ResetSpawnCooldown()
-    {
-        m_spawnCooldown = Random.Range(m_cooldownRange.x, m_cooldownRange.y);
-    }
+    private void ResetSpawnCooldown() => m_spawnCooldown = Random.Range(m_cooldownRange.x, m_cooldownRange.y);
 
     public void RemoveCustomer()
     {

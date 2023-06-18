@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
-    private Camera m_camera;
     private Vector3 m_targetPosition;
+    private Camera m_camera;
 
     private void Start()
     {

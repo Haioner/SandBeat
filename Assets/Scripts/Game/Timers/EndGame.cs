@@ -4,25 +4,18 @@ using TMPro;
 
 public class EndGame : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI m_scoreTMP;
     [SerializeField] private TextMeshProUGUI m_highscoreScoreTMP;
     [SerializeField] private AnimationCurve m_scoreCurve;
+    [SerializeField] private TextMeshProUGUI m_scoreTMP;
     [SerializeField] private AudioSource m_scoreSource;
 
     private float m_scoreIncreaseSpeed = 1f;
+    private float m_lastSoundTime;
     private float m_currentScore;
     private bool m_canCountScore;
-    private float m_lastSoundTime;
 
-    private void Start()
-    {
-        LoadScores();
-    }
-
-    private void Update()
-    {
-        UpdateScore();
-    }
+    private void Start() => LoadScores();
+    private void Update() => UpdateScore();
 
     private void UpdateScore()
     {
@@ -41,12 +34,6 @@ public class EndGame : MonoBehaviour
 
     private void PlayAudio(float curveValue)
     {
-        float soundSpeed = Mathf.Lerp(0.9f, 1.2f, curveValue);
-        float minSoundSpeed = 0.5f;
-
-        float adjustedSoundSpeed = Mathf.Lerp(minSoundSpeed, 1f, soundSpeed);
-        m_scoreSource.pitch = adjustedSoundSpeed;
-
         float maxWaitTime = Mathf.Lerp(1f, 0.05f, (curveValue - 5f) / 95f);
         float waitTime = Mathf.Lerp(0.1f, maxWaitTime, curveValue / 100f);
 
@@ -72,13 +59,11 @@ public class EndGame : MonoBehaviour
     {
         ScoreManager.instance.RestartScore();
         FindObjectOfType<Transition>().PlayOutTransition("Menu");
-        //SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
     {
         ScoreManager.instance.RestartScore();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         string sceneName = SceneManager.GetActiveScene().name;
         FindObjectOfType<Transition>().PlayOutTransition(sceneName);
     }

@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     public MovementController PlayerMovement;
     public PlayerHand playerHand;
 
-    [Header("Score")]
-    [SerializeField] private StarOrder m_starOrderPrefab;
+    [Header("End")]
     [SerializeField] private GameObject m_endCanvas;
 
     [Header("Audio Manager")]
@@ -104,15 +103,6 @@ public class GameManager : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
-
-    public void SpawnStars(int score, Transform position)
-    {
-        ScoreManager.instance.AddScore(score);
-        StarOrder currentStarOrder = Instantiate(m_starOrderPrefab, position.position, Quaternion.identity);
-        currentStarOrder.SetStars(score);
-    }
-
 }

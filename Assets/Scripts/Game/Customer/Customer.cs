@@ -1,23 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
     [SerializeField] private float m_speed;
     [SerializeField] private Rigidbody2D rb;
+
     private Vector3 m_positionToMove;
     private bool m_isLeaving;
 
-    private void FixedUpdate()
-    {
-        MoveToPosition();
-    }
+    private void FixedUpdate() => MoveToPosition();
 
-    public void SetPositionToMove(Vector3 posToMove)
-    {
-        m_positionToMove = posToMove;
-    }
+    public void SetPositionToMove(Vector3 posToMove) => m_positionToMove = posToMove;
 
     private void MoveToPosition()
     {

@@ -4,9 +4,9 @@ using TMPro;
 
 public class TimerManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource m_shortTimeSource;
     [SerializeField] private TextMeshProUGUI m_timerText;
     [SerializeField] private DOTweenAnimation m_dotAnim;
-    [SerializeField] private AudioSource m_shortTimeSource;
     [SerializeField] private float m_timer = 120f;
 
     private void Start() => InvokeRepeating("UpdateTimer", 0, 1);

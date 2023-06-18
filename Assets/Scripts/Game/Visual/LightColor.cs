@@ -10,7 +10,6 @@ public class LightColor : MonoBehaviour
     private void RandomLightColor()
     {
         if (GameManager.instance != null && !GameManager.instance.IsPlaying) return;
-
         m_light.color = RandomColor.Generate();
     }
 }

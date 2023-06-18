@@ -1,55 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    private float Score;
+
+    [SerializeField] private StarOrder m_starScorePrefab;
+
     private float HighScore;
+    private float Score;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-    }
+    private void Awake() => instance = this;
+   
+    private void Start() => LoadHighscore();
 
-    private void Start()
-    {
-        LoadHighscore();
-    }
-
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.G))
-          //  AddScore(50);
-    }
-
-    public float GetScore()
-    {
-        return Score;
-    }
+    public void AddScore(int score) { Score += score; }
+    public float GetScore() { return Score; }
+    public void RestartScore() { Score = 0; }
 
     public float GetHighScore()
     {
         SaveHighscore();
         LoadHighscore();
         return HighScore;
-    }
-
-    public void AddScore(int score)
-    {
-        Score += score;
-    }
-
-    public void RestartScore()
-    {
-        Score = 0;
     }
 
     public void SaveHighscore()
@@ -64,5 +36,12 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("highscore"))
             HighScore = PlayerPrefs.GetFloat("highscore");
+    }
+
+    public void SpawnStars(int score, Transform position)
+    {
+        AddScore(score);
+        StarOrder currentStarOrder = Instantiate(m_starScorePrefab, position.position, Quaternion.identity);
+        currentStarOrder.SetStars(score);
     }
 }

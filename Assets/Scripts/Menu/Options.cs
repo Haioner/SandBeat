@@ -126,30 +126,27 @@ public class Options : MonoBehaviour
 
     public void ApplyVideoSettings()
     {
-        ApplyQuality();
-        ApplyDisplayMode();
-        ApplyResolution();
-        ApplyRenderScale();
+        //ApplyQuality();
+        //ApplyDisplayMode();
+        //ApplyResolution();
+        //ApplyRenderScale();
         ApplyBrightness();
         ApplyPostProcessing();
     }
 
     private void LoadVideoSettings()
     {
-        LoadQuality();
-        LoadDisplay();
-        LoadResolution();
-        LoadRenderScale();
+        //LoadQuality();
+        //LoadDisplay();
+        //LoadResolution();
+        //LoadRenderScale();
         LoadBrightness();
         LoadPostProcessing();
     }
 
     #region Quality
 
-    public void SwichQuality()
-    {
-        currentQuality = qualityDropdown.value;
-    }
+    public void SwichQuality() => currentQuality = qualityDropdown.value;
 
     private void ApplyQuality()
     {
@@ -157,10 +154,7 @@ public class Options : MonoBehaviour
         SaveQuality();
     }
 
-    private void SaveQuality()
-    {
-        PlayerPrefs.SetInt("data_quality", currentQuality);
-    }
+    private void SaveQuality() => PlayerPrefs.SetInt("data_quality", currentQuality);
 
     private void LoadQuality()
     {
@@ -221,10 +215,7 @@ public class Options : MonoBehaviour
         displayModeText.text = currentScreenMode.ToString();
     }
 
-    private void SaveDisplay()
-    {
-        PlayerPrefs.SetInt("display", currentDisplayMode);
-    }
+    private void SaveDisplay() => PlayerPrefs.SetInt("display", currentDisplayMode);
 
     private void LoadDisplay()
     {
@@ -258,15 +249,9 @@ public class Options : MonoBehaviour
         SaveResolution();
     }
 
-    private void ResolutionText()
-    {
-        resolutionText.text = resolutions[currentResolution].x.ToString() + "x" + resolutions[currentResolution].y.ToString();
-    }
+    private void ResolutionText() => resolutionText.text = resolutions[currentResolution].x.ToString() + "x" + resolutions[currentResolution].y.ToString();
 
-    private void SaveResolution()
-    {
-        PlayerPrefs.SetInt("resolution", currentResolution);
-    }
+    private void SaveResolution() => PlayerPrefs.SetInt("resolution", currentResolution);
 
     private void LoadResolution()
     {
@@ -292,10 +277,8 @@ public class Options : MonoBehaviour
         SaveRenderScale();
     }
 
-    private void SaveRenderScale()
-    {
-        PlayerPrefs.SetFloat("renderScale", currentRenderScale);
-    }
+    private void SaveRenderScale() => PlayerPrefs.SetFloat("renderScale", currentRenderScale);
+
 
     private void LoadRenderScale()
     {
@@ -315,10 +298,7 @@ public class Options : MonoBehaviour
 
     #region Brightnees
 
-    public void BrightnessValue(float sliderValue)
-    {
-        currentBrightness = (int)sliderValue;
-    }
+    public void BrightnessValue(float sliderValue) => currentBrightness = (int)sliderValue;
 
     private void ApplyBrightness()
     {
@@ -333,10 +313,7 @@ public class Options : MonoBehaviour
         SaveBrightness();
     }
 
-    private void SaveBrightness()
-    {
-        PlayerPrefs.SetInt("brightness", currentBrightness);
-    }
+    private void SaveBrightness() => PlayerPrefs.SetInt("brightness", currentBrightness);
 
     private void LoadBrightness()
     {
@@ -379,10 +356,7 @@ public class Options : MonoBehaviour
         SavePostProcessing();
     }
 
-    private void SavePostProcessing()
-    {
-        PlayerPrefs.SetInt("postprocessing", currentPostProcessing);
-    }
+    private void SavePostProcessing() => PlayerPrefs.SetInt("postprocessing", currentPostProcessing);
 
     private void LoadPostProcessing()
     {
@@ -413,10 +387,7 @@ public class Options : MonoBehaviour
         LoadMusicVolume();
     }
 
-    private float AudioValueText(float value)
-    {
-        return value * 100;
-    }
+    private float AudioValueText(float value) { return value * 100; }
 
     #region Master
     public void MasterVolume()
@@ -427,10 +398,7 @@ public class Options : MonoBehaviour
         MasterText();
     }
 
-    private void MasterText()
-    {
-        masterText.text = AudioValueText(currentMaster).ToString("F0");
-    }
+    private void MasterText() => masterText.text = AudioValueText(currentMaster).ToString("F0");
 
     private void LoadMasterVolume()
     {
@@ -452,10 +420,7 @@ public class Options : MonoBehaviour
         SoundText();
     }
 
-    private void SoundText()
-    {
-        soundText.text = AudioValueText(currentSound).ToString("F0");
-    }
+    private void SoundText() => soundText.text = AudioValueText(currentSound).ToString("F0");
 
     private void LoadSoundVolume()
     {
@@ -477,10 +442,7 @@ public class Options : MonoBehaviour
         MusicText();
     }
 
-    private void MusicText()
-    {
-        musicText.text = AudioValueText(currentMusic).ToString("F0");
-    }
+    private void MusicText() => musicText.text = AudioValueText(currentMusic).ToString("F0");
 
     private void LoadMusicVolume()
     {
@@ -494,5 +456,4 @@ public class Options : MonoBehaviour
     #endregion
 
     #endregion
-
 }

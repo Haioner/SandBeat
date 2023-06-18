@@ -136,7 +136,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1833930007
   m_SortingOrder: 5
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4976729042067834612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +196,9 @@ MonoBehaviour:
   Ingredient: {fileID: 11400000, guid: dcccb3b653b1344468dc2738f486b1f6, type: 2}
   ingredientManager: {fileID: 0}
   MinigameAudioSource: {fileID: 6884752345603279796}
-  MissAudioSource: {fileID: 7853994517710087474}
   AudioClips:
   - {fileID: 8300000, guid: 073ba6556f609714bba7c23f31122e8f, type: 3}
+  MissAudioSource: {fileID: 7853994517710087474}
   m_anim: {fileID: 3268372621239027047}
   m_pin: {fileID: 8719356374650035029}
   m_greenHit: {fileID: 2614076277823300846}

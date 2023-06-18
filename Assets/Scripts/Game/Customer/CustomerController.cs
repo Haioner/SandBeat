@@ -1,39 +1,34 @@
-using Cinemachine;
-using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class CustomerController : MonoBehaviour, Iinteractable
 {
     [Header("Recipes")]
     [SerializeField] private RecipeSO m_recipes;
-    private int currentRecipe;
+    private int m_currentRecipe;
 
     [Header("Order Canvas")]
     [SerializeField] private OrderItem m_orderItem;
     [SerializeField] private Transform m_orderCanvas;
     private OrderItem m_currentOrder;
-    private float m_waitTimer;
     private bool m_canRemoveCustomer;
+    private float m_waitTimer;
 
     [Header("Interact")]
-    [SerializeField] private Transform m_canvasPos;
-    [SerializeField] private GameObject m_interactCanvas;
     [SerializeField] private CinemachineTargetGroup m_targetGroup;
+    [SerializeField] private GameObject m_interactCanvas;
     [SerializeField] private AudioClip m_interactClip;
+    [SerializeField] private Transform m_canvasPos;
     private GameObject m_currentInteractCanvas;
 
     private CustomerSpawner m_spawner;
 
-    private void Awake()
-    {
-        m_spawner = GetComponent<CustomerSpawner>();
-    }
+    private void Awake() => m_spawner = GetComponent<CustomerSpawner>();
 
     private void Update()
     {
         if (!GameManager.instance.IsPlaying) return;
-
         UpdateOrderWaitTimer();
     }
 
@@ -61,18 +56,6 @@ public class CustomerController : MonoBehaviour, Iinteractable
         }
     }
 
-    public void StartOrder()
-    {
-        ClearOrder();
-        RandomRecipe();
-
-        OrderItem currentOrder = Instantiate(m_orderItem, m_orderCanvas);
-        Recipes currentRecipeOrder = m_recipes.recipes[currentRecipe];
-        currentOrder.InitOrder(currentRecipeOrder);
-        m_currentOrder = currentOrder;
-        m_waitTimer = currentRecipeOrder.WaitTime;
-    }
-
     private void ClearOrder()
     {
         if (m_currentOrder == null) return;
@@ -80,16 +63,28 @@ public class CustomerController : MonoBehaviour, Iinteractable
         m_currentOrder = null;
     }
 
+    public void StartOrder()
+    {
+        ClearOrder();
+        RandomRecipe();
+
+        OrderItem currentOrder = Instantiate(m_orderItem, m_orderCanvas);
+        Recipes currentRecipeOrder = m_recipes.recipes[m_currentRecipe];
+        currentOrder.InitOrder(currentRecipeOrder);
+        m_currentOrder = currentOrder;
+        m_waitTimer = currentRecipeOrder.WaitTime;
+    }
+
     private void RandomRecipe()
     {
         int randRecipe = Random.Range(0, m_recipes.recipes.Count);
-        currentRecipe = randRecipe;
+        m_currentRecipe = randRecipe;
     }
 
     private void CheckIngredients()
     {
         List<IngredientSO> playerIngredients = GameManager.instance.playerHand.GetIngredients();
-        Recipes customerRecipe = m_recipes.recipes[currentRecipe];
+        Recipes customerRecipe = m_recipes.recipes[m_currentRecipe];
 
         //Check Ingredient in recipe
         int matchingIngredients = 0;
@@ -129,7 +124,7 @@ public class CustomerController : MonoBehaviour, Iinteractable
             matchScore = 2;
 
         int score = matchScore + (isOrderCorrect ? 2 : 0) + timerPoints;
-        GameManager.instance.SpawnStars(score, m_spawner.m_customers[0].transform);
+        ScoreManager.instance.SpawnStars(score, m_spawner.m_customers[0].transform);
     }
 
     #region Interact Methods
