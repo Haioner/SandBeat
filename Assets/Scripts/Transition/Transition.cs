@@ -8,7 +8,7 @@ public class Transition : MonoBehaviour
 
     public void PlayOutTransition(string _sceneName)
     {
-        //Play Off transition and set the scene name
+        //Play Oout transition and switch to the scene by name
         anim.Play("Out");
         sceneName = _sceneName;
     }

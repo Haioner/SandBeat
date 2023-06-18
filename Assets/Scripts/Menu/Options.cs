@@ -55,19 +55,16 @@ public class Options : MonoBehaviour
     private float currentSound;
     private float currentMusic;
 
-    private void Awake()
-    {
-        LoadVideoSettings();
-    }
+    private void Awake() => LoadVideoSettings();
 
-    private void Start()
-    {
-        LoadAudioSettings();
-    }
+    private void Start() => LoadAudioSettings();
 
-    private void Update()
+    private void Update() => ButtonChangeState();
+
+    private void ButtonChangeState()
     {
-        ButtonChangeState();
+        if (Input.GetKeyDown(optionsKey))
+            ChangeCGState();
     }
 
     public void ChangeCGState()
@@ -109,22 +106,20 @@ public class Options : MonoBehaviour
     private void PauseGame()
     {
         if (backToMenuButton.activeInHierarchy)
-        {
             Time.timeScale = 0;
-        }
     }
 
-    private void ButtonChangeState()
-    {
-        if (Input.GetKeyDown(optionsKey))
-            ChangeCGState();
-    }
-
+    //In Game Buttons
     public void BackToMenu()
     {
         Time.timeScale = 1;
         FindObjectOfType<Transition>().PlayOutTransition("Menu");
-        //SceneManager.LoadScene("Menu");
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        FindObjectOfType<Transition>().PlayOutTransition("Game");
     }
 
     #region Video
